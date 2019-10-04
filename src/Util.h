@@ -35,12 +35,16 @@ static inline vector<string> split(const char* strInput, const char* delim)
 
 	char* token = strtok(str, delim);
 	while (token != NULL) {
-		result.push_back(token);
+		//if (strlen(token) == 7 && token[0] == '5') {
+			result.push_back(token);
+		//}
 		token = strtok(NULL, delim);
 	}
 	delete[] str;
 	return result;
 }
+
+
 
 
 // return true if strVal has the right format

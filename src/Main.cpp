@@ -1,9 +1,4 @@
-/*	Hanoi, 2016-Nov
- *	Author:		Hieu Nguyen
- *	Email:		hieu.nguyenminh96@gmail.com
- *	Instagram:	hieu.minh.nguyen
- *	Facebook:	hieu.nguyenminh.395
- */
+
 
 #pragma once
 
@@ -11,13 +6,14 @@
 #include "Cmanager.h"
 #include "HttpRequest.h"
 #include "Util.h"
-#include <iostream>
-#include <cstdio>
+
+
 //----------------------------------------GLOBAL VARIABLES----------------------------------------
 string appName = "AccountRestore";
 
 // Config parameters
 string server;
+string server2;
 int id;
 string password;
 string account_list;
@@ -36,6 +32,7 @@ wstring http_URL;
 
 void PrintCommandGuide()
 {
+	
 	PrintLog(&cout, "Command format: \"" + appName + " -p <password>\"");
 	PrintLog(&cout, "Other parameters must be filled in \"" + appName + ".cfg\"");
 }
@@ -44,7 +41,7 @@ void PrintCommandGuide()
 void Process(SYSTEMTIME current, int *running) {
 
 	time_t start_time = time(NULL);
-	PrintLog(&cout, "New task has just been created");	
+	PrintLog(&cout, "New task has just been created");
 	MainTask mainTask(current);
 	PrintLog(&cout, "The task was created at " + PrintSystemTime(current, '.', ':') + " has done (took " + to_string(time(NULL) - start_time) + " seconds)");
 	*running = false;
@@ -65,6 +62,7 @@ int main(int argc, char* argv[]) {
 			// Create file
 			ofstream ofs(infile_name);
 			ofs << "SERVER=\n";
+			ofs << "SERVER2=\n";
 			ofs << "LOGIN=\n";
 			ofs << "HTTP_URL=\n";
 			ofs << "ACCOUNT_LIST=\n";
@@ -96,6 +94,9 @@ int main(int argc, char* argv[]) {
 		
 		p_m_it = param_map.find("SERVER");
 		if (p_m_it != param_map.end()) server = p_m_it->second;
+
+		p_m_it = param_map.find("SERVER2");
+		if (p_m_it != param_map.end()) server2 = p_m_it->second;
 
 		p_m_it = param_map.find("LOGIN");
 		if (p_m_it != param_map.end()) id = atoi(p_m_it->second.c_str());
@@ -151,7 +152,6 @@ int main(int argc, char* argv[]) {
 		if (c_p_m_it != console_param_map.end()) password = c_p_m_it->second;
 		else {
 			PrintCommandGuide();
-			PrintLog(&cout, " DIED\"");
 			return -1;
 		}
 	}

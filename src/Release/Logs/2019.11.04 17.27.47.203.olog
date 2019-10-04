@@ -1,0 +1,28 @@
+2019.11.04 17:27:48.304	Connect to 133.242.68.191:443 as 1 successfully
+2019.11.04 17:27:48.304	Connect to 133.242.68.191:443 as 1 successfully
+2019.11.04 17:27:48.304	
+2019.11.04 17:27:48.304	Account list from config file:
+2019.11.04 17:27:48.401		102
+2019.11.04 17:27:48.502		Server133.242.68.191:443 Account 800000109 already EXISTED!
+2019.11.04 17:27:48.632		Server133.242.68.191:443 Account 800000111 already EXISTED!
+2019.11.04 17:27:48.632	
+2019.11.04 17:27:48.858	Total user backup files = 269
+2019.11.04 17:27:48.956		Seeking data in "users_20191004_191520_backup" (took 0 seconds)
+2019.11.04 17:27:48.956		Search value: "102,"
+2019.11.04 17:27:48.956	
+2019.11.04 17:27:49.054		Seeking data in "users_20191004_190014_backup" (took 1 seconds)
+2019.11.04 17:27:49.054		Search value: "102,"
+2019.11.04 17:27:49.054	
+2019.11.04 17:27:49.153		Seeking data in "users_20191004_184508_backup" (took 0 seconds)
+2019.11.04 17:27:49.153		Search value: "102,"
+2019.11.04 17:27:49.153	
+2019.11.04 17:27:49.253		Seeking data in "users_20191004_183002_backup" (took 0 seconds)
+2019.11.04 17:27:49.253		Search value: "102,"
+2019.11.04 17:27:49.253			Found UserRecord for User 102
+2019.11.04 17:27:49.253	
+2019.11.04 17:27:49.253	
+2019.11.04 17:27:49.357	Total user backup files = 269
+2019.11.04 17:27:49.357	
+2019.11.04 17:27:49.357	SERVER 133.242.68.191:443 UserRecord for Account 102: FOUND
+2019.11.04 17:27:49.357	
+2019.11.04 17:27:49.357	All accounts haven't gotten their UserRecords! -> Stop processing

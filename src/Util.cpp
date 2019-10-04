@@ -17,6 +17,7 @@ extern string appName;
 
 // Config parameters
 extern string server;
+extern string server2;
 extern int id;
 extern string password;
 extern string account_list;
@@ -85,6 +86,28 @@ void GetUserRecord(CManager &manager, const string &file, const string &search_q
 	}
 }
 
+void GetUserRecordNew(CManager& manager_new, const string& file, const string& search_query, map <int, pair <bool, bool>>& requested_account_list_new, map <int, User_Trade_Record>& requested_account_data_new, ofstream& olog)
+{
+	int total_users = 0;
+	time_t start_restoring = time(NULL);
+	UserRecord* users = manager_new->BackupRequestUsers(file.c_str(), search_query.c_str(), &total_users);
+	PrintLog(&olog, "\tSeeking data in \"" + file + "\" (took " + to_string(time(NULL) - start_restoring) + " seconds)");
+	PrintLog(&olog, "\tSearch value: \"" + search_query + "\"");
+	map <int, UserRecord> user_map;
+	for (int user_i = 0; user_i < total_users; user_i++)
+		user_map[users[user_i].login] = users[user_i];
+	manager_new->MemFree(users);
+
+	for (const auto& u_m_i : user_map)
+	{
+		requested_account_data_new[u_m_i.first].first = u_m_i.second;
+		PrintLog(&olog, "\t\tFound UserRecord for User " + to_string(u_m_i.first));
+
+		map <int, pair <bool, bool>>::iterator r_acc_l_i = requested_account_list_new.find(u_m_i.first);
+		r_acc_l_i->second.first = true;
+	}
+}
+
 void GetOrders(CManager &manager, const string &file, const string &search_query, map <int, pair <bool, bool>> &requested_account_list, map <int, User_Trade_Record> &requested_account_data, ofstream &olog)
 {
 	int total_orders = 0;
@@ -119,6 +142,39 @@ void GetOrders(CManager &manager, const string &file, const string &search_query
 	}
 }
 
+void GetOrdersNew(CManager& manager_new, const string& file, const string& search_query, map <int, pair <bool, bool>>& requested_account_list_new, map <int, User_Trade_Record>& requested_account_data_new, ofstream& olog)
+{
+	int total_orders = 0;
+	time_t start_restoring = time(NULL);
+	TradeRecord* orders = manager_new->BackupRequestOrders(file.c_str(), search_query.c_str(), &total_orders);
+	PrintLog(&olog, "\tSeeking data in \"" + file + "\" (took " + to_string(time(NULL) - start_restoring) + " seconds)");
+	PrintLog(&olog, "\tSearch value: \"" + search_query + "\"");
+	map <int, vector <TradeRecord>> order_map;		// user, orders
+	for (int order_i = 0; order_i < total_orders; order_i++) {
+		order_map[orders[order_i].login].emplace_back(orders[order_i]);
+	}
+	manager_new->MemFree(orders);
+
+	for (const auto& o_m_i : order_map)
+	{
+		int new_order_cnt = 0;
+		map <ORDER_TICKET, TradeRecord>& r_a_d_i_order_map = requested_account_data_new[o_m_i.first].second;
+		for (const TradeRecord& order_i : o_m_i.second) {
+			// If this order is already added -> skipped
+			if (r_a_d_i_order_map.find(order_i.order) != r_a_d_i_order_map.end())
+				continue;
+
+			r_a_d_i_order_map[order_i.order] = order_i;
+			new_order_cnt++;
+		}
+
+		map <int, pair <bool, bool>>::iterator r_acc_l_i = requested_account_list_new.find(o_m_i.first);
+		if (new_order_cnt > 0) {
+			PrintLog(&olog, "\t\tFound " + to_string(new_order_cnt) + " new orders for User " + to_string(o_m_i.first));
+			r_acc_l_i->second.second = true;
+		}
+	}
+}
 // Process main tasks
 MainTask::MainTask(SYSTEMTIME now)
 {
@@ -128,19 +184,20 @@ MainTask::MainTask(SYSTEMTIME now)
 	// the first bool value indicates whether UserRecord for this account is gotten (true)
 	// the second bool value indicates whether orders for this account is gotten (true)
 	map <int, pair <bool, bool>> requested_account_list;
+	map <int, pair <bool, bool>> requested_account_list_new;
 
 	// All data needs to be restored and recovered
 	map <int, User_Trade_Record> requested_account_data;
-
+	map <int, User_Trade_Record> requested_account_data_new;
 	CManager manager;
-
+	CManager manager_new;
 	// Login
 	{
 		// Check dll file
 		if (!manager.IsValid())
 			return;
 
-		//--- connect
+		//--- connect server 1
 		if (manager->Connect(server.c_str()) != RET_OK ||
 			manager->Login(id, password.c_str()) != RET_OK)
 		{
@@ -148,7 +205,18 @@ MainTask::MainTask(SYSTEMTIME now)
 			return;
 		}
 
+		//--- connect server 2
+		if (manager_new->Connect(server2.c_str()) != RET_OK ||
+			manager_new->Login(id, password.c_str()) != RET_OK)
+		{
+			PrintLog(&olog, "Login FAILED!");
+			return;
+		}
+
+		
+
 		PrintLog(&olog, "Connect to " + server + " as " + to_string(id) + " successfully");
+		PrintLog(&olog, "Connect to " + server2 + " as " + to_string(id) + " successfully");
 		PrintLog(&olog, "");
 	}
 
@@ -159,22 +227,40 @@ MainTask::MainTask(SYSTEMTIME now)
 		PrintLog(&olog, "");
 	}
 	else {
-		vector <string> acc_list_without_comma = split(account_list.c_str(), ",");
+		vector <string> acc_list_without_comma = split(account_list.c_str(), ",");	
+		
 		for (const string &acc_s_i : acc_list_without_comma) {
 			int acc_i = atoi(acc_s_i.c_str());
 			int total_rRecord = 1;
-			UserRecord *p_users = manager->UserRecordsRequest(&acc_i, &total_rRecord);
+			if (to_string(acc_i).length() == 3 && to_string(acc_i)[0] == '1') {
+				UserRecord* p_users = manager->UserRecordsRequest(&acc_i, &total_rRecord);
 
-			// If user exists -> skip
-			if (p_users != NULL) {
-				PrintLog(&olog, "\tAccount " + to_string(acc_i) + " already EXISTED!");
-				manager->MemFree(p_users);
-				continue;
+				// If user exists -> skip
+				if (p_users != NULL) {
+					PrintLog(&olog,"\tServer" + server + " Account " + to_string(acc_i) + " already EXISTED!");
+					manager->MemFree(p_users);
+					continue;
+				}
+
+				PrintLog(&olog, "\t" + to_string(acc_i));
+				requested_account_list[acc_i] = mp(false, false);
 			}
+			if (to_string(acc_i).length() == 9 && to_string(acc_i)[0] == '8') {
+				UserRecord* p_users = manager_new->UserRecordsRequest(&acc_i, &total_rRecord);
 
-			PrintLog(&olog, "\t" + to_string(acc_i));
-			requested_account_list[acc_i] = mp(false, false);
+				// If user exists -> skip
+				if (p_users != NULL) {
+					PrintLog(&olog, "\tServer" + server2 + " Account " + to_string(acc_i) + " already EXISTED!");
+					manager_new->MemFree(p_users);
+					continue;
+				}
+
+				PrintLog(&olog, "\t" + to_string(acc_i));
+				requested_account_list_new[acc_i] = mp(false, false);
+			}
+			
 		}
+		
 		PrintLog(&olog, "");
 	}
 	
@@ -213,7 +299,7 @@ MainTask::MainTask(SYSTEMTIME now)
 		}
 	}
 
-	if (requested_account_list.size() == 0) {
+	if (requested_account_list.size() == 0 && requested_account_list_new.size() == 0) {
 		PrintLog(&olog, "There's no account need to be restored.");
 		return;
 	}
@@ -236,6 +322,7 @@ MainTask::MainTask(SYSTEMTIME now)
 			string file_i = *f_i;
 
 			vector <int> inqueue_acc;	// Contains all accounts haven't got their's UserRecords
+				
 			for (const auto &r_acc_l_i : requested_account_list) {
 				// If UserRecord for this account is already gotten -> skip
 				if (r_acc_l_i.second.first) continue;
@@ -265,17 +352,86 @@ MainTask::MainTask(SYSTEMTIME now)
 		PrintLog(&olog, "");
 	}
 
+	// Get UserRecord for requested account SERVER 2
+	{
+		// Get backup user file names
+		set <string> bkUsers_file;
+		{
+			int total_bkUsers = 0;
+			BackupInfo* bkUsers = manager_new->BackupInfoUsers(BACKUPS_ALL, &total_bkUsers);
+			for (int user_i = 0; user_i < total_bkUsers; user_i++)
+				bkUsers_file.insert(bkUsers[user_i].file);
+			manager_new->MemFree(bkUsers);
+		}
+		PrintLog(&olog, "Total user backup files = " + to_string(bkUsers_file.size()));
+
+		for (set <string>::const_reverse_iterator f_i = bkUsers_file.rbegin(); f_i != bkUsers_file.rend(); f_i++)
+		{
+			string file_i = *f_i;
+
+			vector <int> inqueue_acc;	// Contains all accounts haven't got their's UserRecords
+
+			for (const auto& r_acc_l_i : requested_account_list) {
+				// If UserRecord for this account is already gotten -> skip
+				if (r_acc_l_i.second.first) continue;
+
+				inqueue_acc.emplace_back(r_acc_l_i.first);
+			}
+
+			if (inqueue_acc.empty()) break;	// If all accounts have gotten UserRecords -> break
+
+			string search_query;
+			for (int acc_i = 0; acc_i < inqueue_acc.size(); acc_i++) {
+				string temp = search_query + to_string(inqueue_acc[acc_i]);
+				if (temp.size() > QUERY_SIZE_MAX) {
+					GetUserRecordNew(manager_new, file_i, search_query, requested_account_list_new, requested_account_data_new, olog);
+					search_query = "";
+					PrintLog(&olog, "");
+				}
+				search_query += to_string(inqueue_acc[acc_i]) + ",";
+
+				if (acc_i == inqueue_acc.size() - 1) {
+					GetUserRecordNew(manager_new, file_i, search_query, requested_account_list_new, requested_account_data_new, olog);
+					search_query = "";
+					PrintLog(&olog, "");
+				}
+			}
+		}
+		PrintLog(&olog, "");
+	}
+
 	// Check if any account hasn't had UserRecord
 	{
 		int accounts_has_UserRecord = 0;
 		for (auto &r_acc_l_i : requested_account_list) {
 			if (r_acc_l_i.second.first == false) {
-				PrintLog(&olog, "UserRecord for Account " + to_string(r_acc_l_i.first) + ": NOT FOUND -> skipped!");
+				PrintLog(&olog,"SERVER "+ server +" UserRecord for Account " + to_string(r_acc_l_i.first) + ": NOT FOUND -> skipped!");
 				requested_account_list.erase(r_acc_l_i.first);	// Delete accounts which haven't gotten UserRecord
 				continue;
 			}
 			else {
-				PrintLog(&olog, "UserRecord for Account " + to_string(r_acc_l_i.first) + ": FOUND");
+				PrintLog(&olog, "SERVER " + server + " UserRecord for Account " + to_string(r_acc_l_i.first) + ": FOUND");
+				accounts_has_UserRecord++;
+			}
+		}
+		if (accounts_has_UserRecord == 0) {
+			PrintLog(&olog, "All accounts haven't gotten their UserRecords! -> Stop processing");
+			return;
+		}
+		PrintLog(&olog, "");
+	}
+
+	// Check if any account hasn't had UserRecord SERVER 2
+	{
+		int accounts_has_UserRecord = 0;
+		for (auto& r_acc_l_i : requested_account_list_new) {
+			if (r_acc_l_i.second.first == false) {
+				PrintLog(&olog, "SERVER " + server2 + " UserRecord for Account " + to_string(r_acc_l_i.first) + ": NOT FOUND -> skipped!");
+				requested_account_list_new.erase(r_acc_l_i.first);	// Delete accounts which haven't gotten UserRecord
+				continue;
+			}
+			else {
+				PrintLog(&olog, "SERVER " + server2 + " UserRecord for Account " + to_string(r_acc_l_i.first) + ": FOUND");
 				accounts_has_UserRecord++;
 			}
 		}
@@ -345,6 +501,66 @@ MainTask::MainTask(SYSTEMTIME now)
 		PrintLog(&olog, "");
 	}
 
+
+	// Get orders for requested accounts SERVER 2
+	{
+		// Get backup order file names
+		set <string> bkOrders_file;
+		if (Search_Orders_From_Certain_Files) {
+			ifstream c_o_f_ifs(appName + ".orderfiles");
+			if (c_o_f_ifs.good() == false) {
+				ofstream c_o_f_ofs(appName + ".orderfiles");	// create file
+			}
+			else {
+				string orderFileName;
+				while (c_o_f_ifs >> orderFileName) {
+					bkOrders_file.insert(orderFileName);
+				}
+			}
+		}
+		else {
+			{
+				int total_bkOrders = 0;
+				BackupInfo* bkOrders = manager_new->BackupInfoOrders(BACKUPS_ALL, &total_bkOrders);
+				for (int order_i = 0; order_i < total_bkOrders; order_i++)
+					bkOrders_file.insert(bkOrders[order_i].file);
+				manager_new->MemFree(bkOrders);
+			}
+		}
+		PrintLog(&olog, "Total order backup files = " + to_string(bkOrders_file.size()));
+
+		for (set <string>::const_reverse_iterator f_i = bkOrders_file.rbegin(); f_i != bkOrders_file.rend(); f_i++)
+		{
+			string file_i = *f_i;
+
+			vector <int> inqueue_acc;	// Contains all accounts need to get orders
+			for (const auto& r_acc_l_i : requested_account_list_new) {
+				if (Search_All_Order_Files == false && r_acc_l_i.second.second == true)
+					continue;
+
+				inqueue_acc.emplace_back(r_acc_l_i.first);
+			}
+
+			string search_query;
+			for (int acc_i = 0; acc_i < inqueue_acc.size(); acc_i++) {
+				string temp = search_query + to_string(inqueue_acc[acc_i]);
+				if (temp.size() > QUERY_SIZE_MAX) {
+					GetOrdersNew(manager_new, file_i, search_query, requested_account_list_new, requested_account_data_new, olog);
+					search_query = "";
+					PrintLog(&olog, "");
+				}
+				search_query += to_string(inqueue_acc[acc_i]) + ",";
+
+				if (acc_i == inqueue_acc.size() - 1) {
+					GetOrdersNew(manager_new, file_i, search_query, requested_account_list_new, requested_account_data, olog);
+					search_query = "";
+					PrintLog(&olog, "");
+				}
+			}
+		}
+		PrintLog(&olog, "");
+	}
+
 	// Recover accounts and orders
 	for (const auto &r_acc_d_i : requested_account_data)
 	{
@@ -361,8 +577,30 @@ MainTask::MainTask(SYSTEMTIME now)
 			else PrintLog(&olog, "Restore account " + to_string(r_acc_d_i.first) + " SUCCESSFULLY! (" + to_string(r_acc_d_i.second.second.size()) + " orders)");
 		}
 		else {
-			PrintLog(&olog, "Account " + to_string(r_acc_d_i.first) + " already EXISTED!");
+			PrintLog(&olog, "SERVER " + server + "Account " + to_string(r_acc_d_i.first) + " already EXISTED!");
 			manager->MemFree(p_users);
+		}
+		PrintLog(&olog, "");
+	}
+
+	// Recover accounts and orders for SERVER 2
+	for (const auto& r_acc_d_i : requested_account_data_new)
+	{
+		PrintLog(&olog, "Restoring account " + to_string(r_acc_d_i.first));
+		int total_rRecord = 1;
+		UserRecord* p_users = manager_new->UserRecordsRequest(&r_acc_d_i.first, &total_rRecord);
+
+		// If user doesn't exist -> recover
+		if (p_users == NULL) {
+			int res = UserRecover(manager_new, r_acc_d_i.second.first, r_acc_d_i.second.second, olog);
+			if (res == false) {
+				PrintLog(&olog, "Restore account " + to_string(r_acc_d_i.first) + " FAILED!");
+			}
+			else PrintLog(&olog, "Restore account " + to_string(r_acc_d_i.first) + " SUCCESSFULLY! (" + to_string(r_acc_d_i.second.second.size()) + " orders)");
+		}
+		else {
+			PrintLog(&olog,"SERVER "+ server2 +" Account " + to_string(r_acc_d_i.first) + " already EXISTED!");
+			manager_new->MemFree(p_users);
 		}
 		PrintLog(&olog, "");
 	}
