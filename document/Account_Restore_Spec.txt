@@ -1,0 +1,36 @@
+﻿
+I. Giới thiệu
+Ứng dụng AccountRestore thực hiện khôi phục lại toàn bộ dữ liệu(bao gồm thông thông tin về account, thông tin về lịch sử giao dịch) của account đã bị xóa trên MT4 service.
+
+II. Cách thức hoạt động
+
+Khởi động ứng dụng từ màn hình Console với các tham số như sau:
+AccountRestore -p <password>
+
+<password>: là password của account <login id>
+Các tham số còn lại được lấy từ file AccountRestore.cfg trong cùng thư mục với nội dung
+
+SERVER=172.16.20.248:443
+LOGIN=200
+HTTP_URL=http://172.16.4.10:8888/
+ACCOUNT_LIST=1120077
+INTERVAL(MINUTE)=1440
+
+Trong đó:
+<server>:	server
+<login id>: là ID của tài khoản quản trị MT4 service.
+<http url>: là một Http url.
+<account list>: là danh sách các account cần khôi phục, viết liền nhau và phân cách bởi dấu phẩy (",")
+<interval>: là khoảng thời gian giữa các lần xử lý liên tiếp (đơn vị là phút).
+
+Các tham số bắt buộc phải có là login, password, server
+Nếu tham số interval không cung cấp thì thực hiện duy nhất một lần xử lý.
+Nếu tham số interval được cung cấp thì ứng dụng sẽ thực hiện xử lý lặp lại mỗi <interval> phút (tức là lặp lại quá trình tìm kiếm danh sách các account cần restore và thực hiện restore (khôi phục dữ liệu account))..
+
+Trong hai tham số -url và -a phải cung cấp tối thiểu một tham số để ứng dụng biết được danh sách các account cần restore.
+Nếu tham số -url được cung cấp thì ứng dụng sẽ truy cập đến url để lấy danh sách các account cần được restore (trong trường hợp không có account nào được chỉ ra thì url trên trả về chuỗi rỗng ("") hoặc số 0)
+Nếu hai tham số -a và -url được cung cấp thì ứng dụng thu thập danh sách các account cần được restore từ cả hai nguồn trên.
+
+Việc restore account chỉ thực hiện khi account đó không tồn tại trong cơ sở dữ liệu hiện tại của MT4 service (nếu account nào đã tồn tại rồi thì ghi thông báo ra log, bỏ qua bước restore và xử lý các account tiếp theo).
+Việc restore account phải đảm bảo chính xác các thông tin về lịch sử giao dịch và balance, equity hiện tại.
+
