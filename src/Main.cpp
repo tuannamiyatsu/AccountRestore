@@ -1,4 +1,9 @@
-
+/*	Hanoi, 2016-Nov
+ *	Author:		Hieu Nguyen
+ *	Email:		hieu.nguyenminh96@gmail.com
+ *	Instagram:	hieu.minh.nguyen
+ *	Facebook:	hieu.nguyenminh.395
+ */
 
 #pragma once
 
@@ -32,7 +37,6 @@ wstring http_URL;
 
 void PrintCommandGuide()
 {
-	
 	PrintLog(&cout, "Command format: \"" + appName + " -p <password>\"");
 	PrintLog(&cout, "Other parameters must be filled in \"" + appName + ".cfg\"");
 }

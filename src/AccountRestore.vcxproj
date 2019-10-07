@@ -142,7 +142,6 @@
     </ClCompile>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Util.cpp" />
-    <ClCompile Include="Util_new.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cmanager.h" />
@@ -151,7 +150,6 @@
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="TemplateTimer.h" />
     <ClInclude Include="Util.h" />
-    <ClInclude Include="Util_new.h" />
     <ClInclude Include="verbalexepressions.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
