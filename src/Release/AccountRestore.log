@@ -126,8 +126,8 @@ C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\
 C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         ]
 C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.cpp(378,31): warning C4018:  '<': signed/unsigned mismatch
 C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.cpp(458,31): warning C4018:  '<': signed/unsigned mismatch
-C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.cpp(542,31): warning C4018:  '<': signed/unsigned mismatch
-C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.cpp(622,31): warning C4018:  '<': signed/unsigned mismatch
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.cpp(543,31): warning C4018:  '<': signed/unsigned mismatch
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.cpp(623,31): warning C4018:  '<': signed/unsigned mismatch
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:  'argument': conversion from 'wchar_t' to 'const _Elem', possible loss of data
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         with
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         [

@@ -483,10 +483,10 @@ MainTask::MainTask(SYSTEMTIME now)
 
 			// If user doesn't exist -> recover
 			if (p_users == NULL) {
-				int res = UserRecover(manager, r_acc_d_i.second.first, r_acc_d_i.second.second, olog);
+				
 				int count_repeat = 0;
 				while (count_repeat < repeat) {
-
+					int res = UserRecover(manager, r_acc_d_i.second.first, r_acc_d_i.second.second, olog);
 
 					if (res == false) {
 
@@ -499,6 +499,7 @@ MainTask::MainTask(SYSTEMTIME now)
 					}
 						
 				}
+
 			}
 			else {
 				PrintLog(&olog, "Server " + server + " Account " + to_string(r_acc_d_i.first) + " already EXISTED!");
@@ -647,10 +648,10 @@ MainTask::MainTask(SYSTEMTIME now)
 
 			// If user doesn't exist -> recover
 			if (p_users == NULL) {
-				int res = UserRecoverNew(manager_new, r_acc_d_i.second.first, r_acc_d_i.second.second, olog);
+				
 				int count_repeat = 0;
 				while (count_repeat < repeat) {
-
+					int res = UserRecoverNew(manager_new, r_acc_d_i.second.first, r_acc_d_i.second.second, olog);
 					if (res == false) {
 						count_repeat++;
 						PrintLog(&olog, "Server" + server2 + " Restore account " + to_string(r_acc_d_i.first) + " FAILED!");
