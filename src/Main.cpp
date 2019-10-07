@@ -20,7 +20,10 @@ string appName = "AccountRestore";
 string server;
 string server2;
 int id;
+int id2;
+int repeat;
 string password;
+string password2;
 string account_list;
 long long interval_m;
 bool Search_All_Order_Files;
@@ -65,14 +68,18 @@ int main(int argc, char* argv[]) {
 			PrintLog(&cout, "Could not find " + infile_name);
 			// Create file
 			ofstream ofs(infile_name);
-			ofs << "SERVER=\n";
-			ofs << "SERVER2=\n";
+			ofs << "SERVER=\n";			
 			ofs << "LOGIN=\n";
+			ofs << "PASSWORD=\n";
+			ofs << "SERVER2=\n";
+			ofs << "LOGIN2=\n";
+			ofs << "PASSWORD2=\n";
+			ofs << "REPEAT=\n";
 			ofs << "HTTP_URL=\n";
 			ofs << "ACCOUNT_LIST=\n";
 			ofs << "INTERVAL(MINUTE)=\n";
 			ofs << "SEARCH_ALL_ORDER_FILES(on,off)=on\n";
-			ofs << "SEARCH_ORDERS_FROM_CERTAIN_FILES(on,off)=off\n";
+			ofs << "SEARCH_ORDERS_FROM_CERTAIN_FILES(on,off)=off\n";			
 			return -1;
 		}
 
@@ -97,13 +104,25 @@ int main(int argc, char* argv[]) {
 		map <string, string>::const_iterator p_m_it;
 		
 		p_m_it = param_map.find("SERVER");
-		if (p_m_it != param_map.end()) server = p_m_it->second;
+		if (p_m_it != param_map.end()) server = p_m_it->second;		
+
+		p_m_it = param_map.find("LOGIN");
+		if (p_m_it != param_map.end()) id = atoi(p_m_it->second.c_str());
+
+		p_m_it = param_map.find("PASSWORD");
+		if (p_m_it != param_map.end()) password = p_m_it->second;
 
 		p_m_it = param_map.find("SERVER2");
 		if (p_m_it != param_map.end()) server2 = p_m_it->second;
 
+		p_m_it = param_map.find("LOGIN2");
+		if (p_m_it != param_map.end()) id2 = atoi(p_m_it->second.c_str());
+
+		p_m_it = param_map.find("PASSWORD2");
+		if (p_m_it != param_map.end()) password2 = p_m_it->second;
+
 		p_m_it = param_map.find("LOGIN");
-		if (p_m_it != param_map.end()) id = atoi(p_m_it->second.c_str());
+		if (p_m_it != param_map.end()) repeat = atoi(p_m_it->second.c_str());
 
 		p_m_it = param_map.find("HTTP_URL");
 		if (p_m_it != param_map.end()) http_URL = string_to_wstring(p_m_it->second);
@@ -144,21 +163,21 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-	// Get password from console
-	{
-		map <string, string> console_param_map;
-		for (int param_i = 1; param_i < argc - 1; param_i += 2) {
-			console_param_map[argv[param_i]] = argv[param_i + 1];
-		}
+	//// Get password from console
+	//{
+	//	map <string, string> console_param_map;
+	//	for (int param_i = 1; param_i < argc - 1; param_i += 2) {
+	//		console_param_map[argv[param_i]] = argv[param_i + 1];
+	//	}
 
-		map <string, string>::const_iterator c_p_m_it;
-		c_p_m_it = console_param_map.find("-p");
-		if (c_p_m_it != console_param_map.end()) password = c_p_m_it->second;
-		else {
-			PrintCommandGuide();
-			return -1;
-		}
-	}
+	//	map <string, string>::const_iterator c_p_m_it;
+	//	c_p_m_it = console_param_map.find("-p");
+	//	if (c_p_m_it != console_param_map.end()) password = c_p_m_it->second;
+	//	else {
+	//		PrintCommandGuide();
+	//		return -1;
+	//	}
+	//}
 
 	// Loop of processing
 	SYSTEMTIME last_run;

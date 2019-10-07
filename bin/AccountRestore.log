@@ -1,0 +1,171 @@
+﻿  StdAfx.cpp
+  HttpRequest.cpp
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(177,41): warning C4018:  '<': signed/unsigned mismatch
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(388,24): warning C4996:  'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to acknowledge that you have received this warning.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\regex(4673): message :  see declaration of 'std::tr1'
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(389,31): warning C4996:  'std::tr1': warning STL4002: The non-Standard std::tr1 namespace and TR1-only machinery are deprecated and will be REMOVED. You can define _SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING to acknowledge that you have received this warning.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\regex(4673): message :  see declaration of 'std::tr1'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:  'argument': conversion from 'wchar_t' to 'const _Elem', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:             _Elem=char
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         ]
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :  see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,void>(_Iter,_Iter,const _Alloc &)' being compiled
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :         with
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :         [
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :             _Elem=wchar_t,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :             _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :             _Alloc=std::allocator<char>
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :         ]
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :  see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,void>(_Iter,_Iter,const _Alloc &)' being compiled
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :         with
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :         [
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :             _Elem=wchar_t,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :             _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :             _Alloc=std::allocator<char>
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(268): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:  'argument': conversion from 'const wchar_t' to 'const _Elem', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:             _Elem=char
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<const wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :             _Iter=const wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<const wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :             _Iter=const wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<const wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :             _Iter=const wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<const wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :             _Iter=const wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         ]
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :  see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_const_iterator<std::_String_val<std::_Simple_types<_Elem>>>,void>(_Iter,_Iter,const _Alloc &)' being compiled
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :         with
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :         [
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :             _Elem=wchar_t,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :             _Iter=std::_String_const_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :             _Alloc=std::allocator<char>
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :         ]
+  Main.cpp
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :  see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_const_iterator<std::_String_val<std::_Simple_types<_Elem>>>,void>(_Iter,_Iter,const _Alloc &)' being compiled
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :         with
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :         [
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :             _Elem=wchar_t,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :             _Iter=std::_String_const_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :             _Alloc=std::allocator<char>
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\HttpRequest.cpp(297): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:  'argument': conversion from 'wchar_t' to 'const _Elem', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:             _Elem=char
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         ]
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :  see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,void>(_Iter,_Iter,const _Alloc &)' being compiled
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         with
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         [
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Elem=wchar_t,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Alloc=std::allocator<char>
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         ]
+  Util.cpp
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :  see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,void>(_Iter,_Iter,const _Alloc &)' being compiled
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         with
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         [
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Elem=wchar_t,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Alloc=std::allocator<char>
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         ]
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.cpp(378,31): warning C4018:  '<': signed/unsigned mismatch
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.cpp(458,31): warning C4018:  '<': signed/unsigned mismatch
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.cpp(542,31): warning C4018:  '<': signed/unsigned mismatch
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.cpp(622,31): warning C4018:  '<': signed/unsigned mismatch
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:  'argument': conversion from 'wchar_t' to 'const _Elem', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:             _Elem=char
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2348,23): warning C4244:         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2359): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :  see reference to function template instantiation 'void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :             _Iter=wchar_t *
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\xstring(2339): message :         ]
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :  see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,void>(_Iter,_Iter,const _Alloc &)' being compiled
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         with
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         [
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Elem=wchar_t,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Alloc=std::allocator<char>
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         ]
+  Generating Code...
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :  see reference to function template instantiation 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,void>(_Iter,_Iter,const _Alloc &)' being compiled
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         with
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         [
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Elem=wchar_t,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :             _Alloc=std::allocator<char>
+C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\Util.h(133): message :         ]
+  AccountRestore.vcxproj -> C:\Program Files (x86)\MetaTrader 4 Administrator\API\Examples\AccountRestoreV2\AccountRestore\src\.\Release\AccountRestore.exe
